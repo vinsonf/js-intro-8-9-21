@@ -1,6 +1,6 @@
 // html things you can do
 // read elements from the page;
-const button = document.querySelector('#my-button');
+const button = document.querySelector('.cool-buttons');
 // update elements text;
 button.innerText = 'Cool button';
 // update elements style
@@ -17,13 +17,7 @@ button.remove();
 document.body.appendChild(button);
 // listen for events
 button.addEventListener('click', function doSomething() {
-    console.log('you clicked the button')
     h1.innerText = 'you clicked the button';
     // add class to element
     h1.classList.add('active')
 });
-
-
-
-
-console.log(button)
