@@ -19,7 +19,11 @@ input.style.color = 'red';
 h1.style.backgroundColor = 'red';
 
 // add a listener
-button.addEventListener('click', function() {
+button.addEventListener('click', addLi);
+
+
+
+function addLi() {
     button.style.color = 'green';
 
     // create an element
@@ -30,14 +34,13 @@ button.addEventListener('click', function() {
 
     input.value = '';
 
-    li.addEventListener('click', function() {
-
-        // add classes
-        li.classList.add('hasBeenClicked');
-    });
-
-});
+    li.addEventListener('click', addClass);
+}
 
 
-
-
+function addClass() {
+    console.log(this);
+    // add classes
+    this.classList.add('hasBeenClicked');
+}
+console.log(Math.random())
