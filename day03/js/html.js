@@ -7,7 +7,7 @@ button.innerText = 'Cool button';
 button.style.color = 'red';
 // create elements
 const h1 = document.createElement('h1');
-// append elements
+// append elements (put them on the page)
 document.body.appendChild(h1);
 // update text
 h1.innerText = 'I am a created h1';

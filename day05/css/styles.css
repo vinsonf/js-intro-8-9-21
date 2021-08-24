@@ -1,0 +1,19 @@
+/* How we see things */
+
+body {
+    font-size: 1em;
+    background-color: bisque
+}
+h1 {
+    font-size: 3em;
+}
+#username {
+    font-size: 2em;
+}
+.submit-button {
+    font-size: 2em;
+}
+
+.hasBeenClicked {
+    color: lightgreen;
+}
