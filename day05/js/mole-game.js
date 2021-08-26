@@ -2,7 +2,7 @@
 let score = 1;
 
 // set the link to the img source
-const moleImgLink = 'https://www.cindyjobs.com/wp-content/uploads/2020/11/Pixabayt-2020.11.04-Animal-158236-Mole-862x650.png';
+const moleImgLink = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrhvHtEAIclkqMwIMXcgnw7fJI72d8gJ9XxA&usqp=CAU';
 
   // create an element
 const img = document.createElement('img');
