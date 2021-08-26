@@ -1,5 +1,4 @@
 // all actions or the verbs thing we do and when we do them
-
 console.dir(document);
 const body = document.body;
 
@@ -9,11 +8,12 @@ const input = document.querySelector('#username');
 const button = document.querySelector('.submit-button');
 
 // place an element inside another elements children list
+body.appendChild(h1);
 body.prepend(h1);
 
 // change the text of an element
 button.innerText = 'ADD AN ITEM';
-
+button.innerHTML = 'ADD AN ITEM2';
 // change a style
 input.style.color = 'red';
 h1.style.backgroundColor = 'red';
