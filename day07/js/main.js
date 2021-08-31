@@ -1,93 +1,93 @@
-/* Playing Card
+let score1 = 0;
+let score2 = 0;
+const p1Container = document.querySelector('#p1-container');
+const p2Container = document.querySelector('#p2-container');
+const p1ScoreContainer = document.querySelectorAll('span')[0];
+const p2ScoreContainer = document.querySelectorAll('span')[1];
 
-1. Color
-2. Number/Value
-3. Suit
-4. image
-5. size
+function updateScoreDisplay() {
+    p1ScoreContainer.innerHTML = score1;
+    p2ScoreContainer.innerHTML = score2;
+}
 
+updateScoreDisplay();
 
-*/
-const deck = [];
+let deck = [];
+const p1Deck = [];
+const p2Deck = [];
 const suits = ['\u2665', '\u2666', '\u2660', '\u2663'];
-let currentSuit = 0;
 
-for(let i = 0; i < 52; i++) {
 
-    const cardObject = {
-        color: getColor(suits[i % 4]),
-        value: getValue(i % 13),
-        suit: suits[i % 4],
-        imgUrl: '',
-        width: '200px',
-        height: '284px'
-    };
+const hearts = createSuitCards(suits[0], 'red');
+const diamonds = createSuitCards(suits[1], 'red');
+const spades = createSuitCards(suits[2], 'black');
+const clubs = createSuitCards(suits[3], 'black');
 
-    deck.push(cardObject);
-    displayCard(cardObject)
+deck = hearts.concat(diamonds, spades, clubs);
+deck.forEach(function(card) {
+    displayCard(card);
+});
+
+
+
+shuffleDeck();
+
+
+
+
+console.log(deck);
+
+
+function dealDeck() {
+    deal(deck, p1Deck, p2Deck);
+}
+
+function deal(deck, deck1, deck2) {
+
+    deck.forEach(function(card, index) {
+        console.log(p2Container, card)
+
+        if (index % 2 === 0) {
+            deck1.push(card);
+            p1Container.prepend( card.element )
+        } else {
+            deck2.push(card);
+            p2Container.prepend( card.element )
+        }
+
+    })
+
+    console.log(deck1, deck2);
+
+
+
 
 }
 
-function displayCard(cardObject) {
-    const div = document.createElement('div');
-    document.body.appendChild(div);
-    div.innerHTML = `
-    <div >${cardObject.value}</div>
-    <div style="text-align: center">${cardObject.suit}</div>
-    <div style="text-align: right">${cardObject.value}</div>
 
-    
-    `;
-    div.style.color = cardObject.color;
-    div.style.fontSize = '80px';
-    div.style.border = '2px solid black';
-    div.style.width = cardObject.width;
-    div.style.padding = '5px';
-    div.style.position = 'absolute';
-    div.style.backgroundColor = 'white';
-    div.classList.add('card');
-}
+function compare() {
 
+    const p1Card = p1Deck[p1Deck.length -1];
+    const p2Card = p2Deck[p2Deck.length -1];
 
-function getValue(number) {
-    switch(number) {
-        case 0: 
-            return 'A';
-            break;
-        case 1:
-            return 'K';
-            break;
-        case 11: 
-            return 'Q';
-            break;
-        case 12: 
-            return 'J';
-            break;
-        default:
-            return number;
-    }
-}
+    if (p1Card.value === p2Card.value) {
 
-function getColor(suit) {
-    if (suit === suits[0] || suit === suits[1]) {
-        return 'red';
+        score1++;
+        score2++;
+        updateScoreDisplay();
+    } else if (p1Card.value > p2Card.value) {
+        score1++;
+        updateScoreDisplay();
     } else {
-        return 'black';
+        score2++;
+        updateScoreDisplay();
     }
+
+    p1Card.element.remove();
+    p2Card.element.remove();
+    p1Deck.pop();
+    p2Deck.pop();
 }
-
-console.log(
-    deck.sort( function(a, b) {
-     if (a.suit > b.suit) {
-        return 1;
-     } else {
-         return -1;
-     }
-    
-    }
-     ));
-
-
 
 
 

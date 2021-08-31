@@ -6,9 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="css/styles.css">
+    <script src="js/helper.js" defer></script>
     <script src="js/main.js" defer></script>
 </head>
 <body>
-    
+    <div>
+        <button onclick="shuffleDeck()">Shuffle</button>
+        <button onclick="dealDeck()">Deal</button>
+        <button onclick="compare()">Compare</button>
+        Player1: <span></span>
+        Player2: <span></span>
+    </div>
+  
+
+
+    <div id="p1-container" class="deck"></div>
+    <div id="p2-container" class="deck"></div>
 </body>
 </html>
