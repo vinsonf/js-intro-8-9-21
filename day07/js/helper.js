@@ -109,3 +109,84 @@ function shuffleDeck() {
 }
 
 
+function updateScoreDisplay() {
+    p1ScoreContainer.innerHTML = score1;
+    p2ScoreContainer.innerHTML = score2;
+}
+
+
+
+function dealDeck() {
+    deal(deck, p1Deck, p2Deck);
+}
+
+function deal(deck, deck1, deck2) {
+
+    deck.forEach(function(card, index) {
+        console.log(p2Container, card)
+
+        if (index % 2 === 0) {
+            deck1.push(card);
+            p1Container.prepend( card.element )
+        } else {
+            deck2.push(card);
+            p2Container.prepend( card.element )
+        }
+    })
+    console.log(deck1, deck2);
+}
+
+function compare() {
+    if (p1Deck.length === 1) {
+
+        let winner = '';
+
+        if (score1 === score2) {
+            winner = "it's a Tie";
+        } else if (score1 > score2) {
+            winner = 'Player 1';
+        } else {
+            winner = 'Player 2';
+        }
+
+        alert('Game Over. the winner is....')
+        alert(winner);
+        window.location.reload();
+        
+    }
+    const p1Card = p1Deck[p1Deck.length -1];
+    const p2Card = p2Deck[p2Deck.length -1];
+
+    if (p1Card.value === p2Card.value) {
+
+        score1++;
+        score2++;
+        updateScoreDisplay();
+    } else if (getPointValue(p1Card.value) > getPointValue(p2Card.value)) {
+        score1++;
+        updateScoreDisplay();
+    } else {
+        score2++;
+        updateScoreDisplay();
+    }
+
+    p1Card.element.remove();
+    p2Card.element.remove();
+    p1Deck.pop();
+    p2Deck.pop();
+}
+
+function getPointValue(value) {
+    if (typeof value === 'number'){
+        return value;
+    } else if( value === 'J') {
+        return 11;
+    } else if( value === 'Q') {
+        return 12;
+    } else if( value === 'K') {
+        return 13;
+    } else {
+        return 14;
+    }
+}
+
