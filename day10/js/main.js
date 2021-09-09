@@ -31,10 +31,11 @@ function whenButtonIsClicked(event) {
     if (!input.value) {
         return;
     }
-    createLi(input.value);
-    resetsInput(input);    
+    
     addTodoItem(input.value);
     saveTodos();
+    createLi(input.value);
+    resetsInput(input);   
 }
 
 
