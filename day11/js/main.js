@@ -16,3 +16,8 @@ const numberMultiplied = randomNumber * answers.length;
 const floored = Math.floor(numberMultiplied);
 const fixed = numberMultiplied.toFixed(0);
 innerHTML(h1, answers[fixed]);
+
+
+const phonePattern = /\(\d{3}\)\d{3}-\d{4}/gi
+
+console.log(phonePattern.test('(555)555-7777'))
